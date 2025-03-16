@@ -1,0 +1,9 @@
+package tw.black.action;
+
+public class DemoHouseBeanAction {
+
+	public DemoHouseBeanAction() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,17 @@
+package tw.black.model;
+
+import org.hibernate.Session;
+
+public class BookDao {
+
+	private Session session;
+
+	public BookDao(Session session) {
+		this.session = session;
+	}
+	
+	
+	
+	
+
+}

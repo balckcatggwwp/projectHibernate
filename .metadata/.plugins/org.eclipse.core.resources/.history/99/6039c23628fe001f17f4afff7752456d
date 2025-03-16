@@ -1,0 +1,15 @@
+package tw.black.model;
+
+public class House {
+	
+	
+	private int houseid;
+	private String housename;
+	public House() {
+
+	}
+	public  House(String housename) {
+		this.housename=housename
+	}
+
+}

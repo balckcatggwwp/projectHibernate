@@ -1,0 +1,11 @@
+package tw.black.model;
+
+public class BookDetail {
+	private int id ;
+	private String publisher;
+	private String publisheraddress;
+	private Book book;
+	public BookDetail() {
+	}
+
+}

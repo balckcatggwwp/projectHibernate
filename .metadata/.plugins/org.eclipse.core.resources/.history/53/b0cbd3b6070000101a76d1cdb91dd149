@@ -1,0 +1,5 @@
+package com.tick.dao;
+
+public class TickDao {
+
+}

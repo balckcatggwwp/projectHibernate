@@ -1,0 +1,11 @@
+package com.tick.interfac;
+
+public interface ItickDAO {
+	//增
+	public void inser(String order ,int user,int time,String Seatid,int hall,int money,int movie,int type,String payout);
+	//刪
+	public void delticket(Integer tickid);
+	//改
+	public void updateticket(int time,String Seatid,int hall,int money,int movie,int type,String payout,int tickid);
+	
+}

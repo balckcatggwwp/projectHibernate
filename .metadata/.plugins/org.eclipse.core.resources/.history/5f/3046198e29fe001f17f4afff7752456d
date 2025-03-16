@@ -1,0 +1,20 @@
+package tw.black.model;
+
+import org.hibernate.Session;
+
+public class HouserDao {
+	
+	
+	private Session session;
+	
+	public HouserDao(Session session) {
+		this.session = session;
+	}
+	public House inser(House inserBean) {
+		if(inserBean!=null) {
+			session.persist(inserBean);
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,24 @@
+package tw.black.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity@Table(name = "role")
+public class Role {
+	
+	private int roleid;
+	private String rolename;
+	
+	private String skill;
+	
+	private Set<Game> games= new HashSet<Game>();
+	
+	
+	
+	public Role() {
+	}
+
+}

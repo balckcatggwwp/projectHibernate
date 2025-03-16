@@ -1,0 +1,5 @@
+package tw.black.model;
+
+public interface IHouseDao {
+	public House inser(House inserBean) ;
+}

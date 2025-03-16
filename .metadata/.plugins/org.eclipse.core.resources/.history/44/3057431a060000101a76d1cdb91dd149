@@ -1,0 +1,5 @@
+package com.tick.interfac;
+
+public interface ItickDAO {
+
+}

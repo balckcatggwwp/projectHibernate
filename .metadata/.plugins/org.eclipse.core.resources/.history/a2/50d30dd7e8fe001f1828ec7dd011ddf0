@@ -1,0 +1,23 @@
+package tw.black.model;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity@Table(name = "stock")
+public class Stock {
+	
+	
+	private int stockid;
+	private String stockname;
+	private String stockcode ;
+	private List<StockTransaction> stockTransactions;
+	
+	public Stock() {
+	
+	}
+	
+	
+
+}

@@ -1,0 +1,32 @@
+package com.project.bean;
+
+public class BookTypeBean implements java.io.Serializable {
+	private static final long serialVersionUID = 1L; 
+	private int tickettypeid;
+	private String tickettype;
+	private int moneytype;
+	public String getTickettype() {
+		return tickettype;
+	}
+	public void setTickettype(String tickettype) {
+		this.tickettype = tickettype;
+	}
+	public int getMoneytype() {
+		return moneytype;
+	}
+	public void setMoneytype(int moneytype) {
+		this.moneytype = moneytype;
+	}
+	public int getTickettypeid() {
+		return tickettypeid;
+	}
+	public void setTickettypeid(int tickettypeid) {
+		this.tickettypeid = tickettypeid;
+	}
+	
+
+	
+	
+	
+
+}

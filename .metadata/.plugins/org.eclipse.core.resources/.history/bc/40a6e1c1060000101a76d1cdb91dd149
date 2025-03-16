@@ -1,0 +1,26 @@
+package com.tick.interfac;
+
+import java.util.List;
+
+import com.tick.bean.BookticketBean;
+
+
+
+public interface ItickDAO {
+	//增
+	public void inser(String order ,int user,int time,String Seatid,int hall,int money,int movie,int type,String payout);
+	//刪
+	public void delticket(Integer tickid);
+	//改
+	public void updateticket(int time,String Seatid,int hall,int money,int movie,int type,String payout,int tickid);
+	//查訂票id
+	public List<BookticketBean> findticketbyid(String tickid);
+	//查訂單編號
+	public List<BookticketBean> findticketbyorderid(String orderid);
+	//查會員id
+	public List<BookticketBean> findticketbyuserid(String userid);
+	//查日期
+	public List<BookticketBean> findticketbystartdate(String startdate);
+	//查廳
+	public static List<BookticketBean> findticketbyhall(String hallid)
+}

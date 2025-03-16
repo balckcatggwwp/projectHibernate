@@ -1,0 +1,9 @@
+package tw.black.model;
+
+public class HouserDao {
+
+	public HouserDao() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

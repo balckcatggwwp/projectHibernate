@@ -1,0 +1,18 @@
+package tw.black.model;
+
+public class HouseService {
+	private HouserDao housedao;
+
+	public HouseService(HouserDao housedao) {
+		super();
+		this.housedao = housedao;
+	}
+	
+	public House inser(House inserBean) {
+		return housedao.inser(inserBean);
+	}
+	
+	public House selectById(Integer id) {
+		return housedao.selectById(id);
+	}
+}

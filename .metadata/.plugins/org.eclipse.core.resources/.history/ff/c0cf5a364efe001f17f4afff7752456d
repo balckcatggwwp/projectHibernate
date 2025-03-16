@@ -1,0 +1,9 @@
+package tw.black.model;
+
+public class BookDetail {
+
+	public BookDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

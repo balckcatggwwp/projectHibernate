@@ -1,0 +1,33 @@
+package tw.black.model;
+
+import java.util.List;
+
+import org.hibernate.Session;
+
+import jakarta.persistence.Query;
+
+public class HouserDao {
+	
+	
+	private Session session;
+	
+	public HouserDao(Session session) {
+		this.session = session;
+	}
+	public House inser(House inserBean) {
+		if(inserBean!=null) {
+			session.persist(inserBean);
+			return inserBean;
+		}
+		return null;
+	}
+	public House selectById(Integer id) {
+		return session.get(House.class,id);
+		
+	}
+	public List<House> selectAll() {
+		Query<House> query=session.createQuery("from House",House.class);
+		return query.list();
+		
+	}
+}

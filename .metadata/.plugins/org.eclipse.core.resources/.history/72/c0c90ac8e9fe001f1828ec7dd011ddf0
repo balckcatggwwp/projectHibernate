@@ -1,0 +1,18 @@
+package tw.black.model;
+
+public class StockTransaction {
+	
+	
+	private int stocktransid;
+	
+	
+	private int tradevolume;
+	
+	private int stockid;
+	private Stock stock;
+	
+	public StockTransaction() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

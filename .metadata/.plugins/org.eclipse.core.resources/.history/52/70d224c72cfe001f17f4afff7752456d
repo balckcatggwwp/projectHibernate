@@ -1,0 +1,5 @@
+package tw.black.model;
+
+public class HouseService {
+
+}

@@ -1,0 +1,10 @@
+package tw.black.model;
+
+public class DemoOneToOneAction2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
