@@ -1,7 +1,0 @@
-package tw.black.action;
-
-public class DemoDepartmentAction2 {
-	public static void main(String[] args) {
-		
-	}
-}

@@ -1,7 +1,0 @@
-package com.tick.dao;
-
-import com.tick.interfac.ItickDAO;
-
-public class TickDao implements ItickDAO{
-
-}

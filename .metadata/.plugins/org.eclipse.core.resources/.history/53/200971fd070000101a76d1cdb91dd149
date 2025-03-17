@@ -1,9 +1,0 @@
-package com.tick.dao;
-
-import org.hibernate.Session;
-
-import com.tick.interfac.ItickDAO;
-
-public class TickDao implements ItickDAO{
-	private Session session;
-}
