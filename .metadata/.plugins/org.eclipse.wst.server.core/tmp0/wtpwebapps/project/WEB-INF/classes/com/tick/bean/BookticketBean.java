@@ -41,6 +41,19 @@ public class BookticketBean implements java.io.Serializable {
 	private String moviename;
 	
 	
+	public BookticketBean(String orderid, int userid, int showtimeid, String seatid, int hallid, int onemoney,
+			int movieid, int tickettypeid, String payout) {
+		super();
+		this.orderid = orderid;
+		this.userid = userid;
+		this.showtimeid = showtimeid;
+		this.seatid = seatid;
+		this.hallid = hallid;
+		this.onemoney = onemoney;
+		this.movieid = movieid;
+		this.tickettypeid = tickettypeid;
+		this.payout = payout;
+	}
 	
 	
 	public BookticketBean(String orderid, int userid, int showtimeid, String seatid, int hallid, int onemoney,
