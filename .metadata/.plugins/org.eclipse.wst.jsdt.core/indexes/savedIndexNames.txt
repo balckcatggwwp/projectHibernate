@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Action\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-340056664.index
-685498803.index
-=======
-INDEX VERSION 1.4+C:\Action\projectHibernate\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-360355054.index
-2002315357.index
-2173755489.index
->>>>>>> origin/master
-3581163120.index
-685498803.index
-3047429442.index
+906670749.index
+784541232.index
+684797078.index
+2705810661.index
