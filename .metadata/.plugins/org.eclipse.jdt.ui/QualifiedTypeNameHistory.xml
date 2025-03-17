@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.hibernate.boot.registry.StandardServiceRegistryBuilder"/>
-    <fullyQualifiedTypeName name="org.hibernate.boot.registry.StandardServiceRegistry"/>
-    <fullyQualifiedTypeName name="org.hibernate.boot.MetadataSources"/>
     <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
     <fullyQualifiedTypeName name="java.sql.RowId"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.NonNull"/>
@@ -38,7 +32,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="tw.black.model.Game"/>
     <fullyQualifiedTypeName name="tw.black.model.Role"/>
     <fullyQualifiedTypeName name="java.util.HashSet"/>
@@ -56,4 +49,15 @@
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="tw.black.model.HouseService"/>
     <fullyQualifiedTypeName name="tw.black.model.House"/>
+    <fullyQualifiedTypeName name="com.tick.bean.BookTypeBean"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.tick.bean.ShowtimeBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.onofflineBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.MovieInfoBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.BookticketvuBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.BookticketBean"/>
 </qualifiedTypeNameHistroy>

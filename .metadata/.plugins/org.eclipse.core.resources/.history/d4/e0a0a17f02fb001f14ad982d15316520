@@ -1,9 +1,0 @@
-package tw.black.modelaaad;
-
-public class HouseBean {
-
-	public HouseBean() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
