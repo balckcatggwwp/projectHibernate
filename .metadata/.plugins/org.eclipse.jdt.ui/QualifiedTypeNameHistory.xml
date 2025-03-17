@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+<<<<<<< HEAD
+=======
+    <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+    <fullyQualifiedTypeName name="java.sql.RowId"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+>>>>>>> origin/master
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.NonNull"/>
@@ -25,6 +31,10 @@
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="jakarta.persistence.ManyToMany"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
+<<<<<<< HEAD
+=======
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+>>>>>>> origin/master
     <fullyQualifiedTypeName name="tw.black.model.Game"/>
     <fullyQualifiedTypeName name="tw.black.model.Role"/>
     <fullyQualifiedTypeName name="java.util.HashSet"/>
@@ -37,6 +47,7 @@
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="tw.black.model.HouseService"/>
     <fullyQualifiedTypeName name="tw.black.model.House"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
@@ -60,4 +71,17 @@
     <fullyQualifiedTypeName name="com.tick.util.HibernateUtil"/>
     <fullyQualifiedTypeName name="com.tick.bean.BookticketvuBean"/>
     <fullyQualifiedTypeName name="com.tick.service.tickservice"/>
+=======
+    <fullyQualifiedTypeName name="com.tick.bean.BookTypeBean"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.tick.bean.ShowtimeBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.onofflineBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.MovieInfoBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.BookticketvuBean"/>
+    <fullyQualifiedTypeName name="com.tick.bean.BookticketBean"/>
+>>>>>>> origin/master
 </qualifiedTypeNameHistroy>
