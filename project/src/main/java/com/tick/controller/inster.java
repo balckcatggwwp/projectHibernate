@@ -1,4 +1,4 @@
-package com.project.controller;
+package com.tick.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,7 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.project.dao.Dao;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.tick.bean.BookticketBean;
+import com.tick.service.tickservice;
+import com.tick.util.HibernateUtil;
 
 @WebServlet("/inster")
 public class inster extends HttpServlet {
@@ -18,6 +23,17 @@ public class inster extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processAction(request,response);
+		
+	}
+
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processAction(request,response);
+	}
+	private void processAction(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		String orderid = request.getParameter("orderid");
 		
 		String userid = request.getParameter("userid");
@@ -42,15 +58,24 @@ public class inster extends HttpServlet {
 		Integer money = Integer.parseInt(onemoney);
 		
 		String payout = request.getParameter("payout");
-		Dao dao =new Dao();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session =factory.getCurrentSession();
+		tickservice tservice = new tickservice(session);
+		BookticketBean bean = new BookticketBean(orderid, user, time, Seatid, hall, money, movie, type, payout);
+		tservice.inser(bean);
+//		Dao dao =new Dao();
 		//System.out.println(orderid);
-		dao.inser(orderid,user,time,Seatid,hall,money,movie,type,payout);
-		request.getRequestDispatcher("findticketAll").forward(request, response);
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		//dao.inser(orderid,user,time,Seatid,hall,money,movie,type,payout);
+		try {
+			request.getRequestDispatcher("findticketAll").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

@@ -73,8 +73,8 @@ public class TickDao implements ItickDAO{
 	};
 	//查日期
 	@Override
-	public List<BookticketvuBean> findticketbystartdate(String startdate){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
+	public List<ShowtimeBean> findticketbystartdate(String startdate){
+		Query<ShowtimeBean> query = session.createQuery("from Showtime where tickid =:n",ShowtimeBean.class);
 		query.setParameter("n", startdate);
 		return query.list();
 	};
