@@ -1,9 +1,0 @@
-package tw.black.model;
-
-public class House {
-
-	public House() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
