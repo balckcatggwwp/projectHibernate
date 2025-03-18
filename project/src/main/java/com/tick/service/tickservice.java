@@ -55,7 +55,7 @@ public class tickservice implements ItickService{
 	};
 	//查日期
 	@Override
-	public List<BookticketvuBean> findticketbystartdate(String startdate){
+	public List<ShowtimeBean> findticketbystartdate(String startdate){
 		return tickDao.findticketbystartdate(startdate);
 	};
 	//查廳
@@ -115,5 +115,6 @@ public class tickservice implements ItickService{
 	public BookticketvuBean Getticketbyid(String tickid) {
 		
 		return tickDao.Getticketbyid(tickid);
-	};
+	}
+	
 }

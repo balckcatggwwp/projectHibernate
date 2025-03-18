@@ -37,7 +37,10 @@ public class OpenSessionViewFilter implements Filter {
 			System.out.println("Transaction rollback");
 			e.printStackTrace();
 		}finally {
-			HibernateUtil.closeSessionFactory();
+			if(session.isOpen()) {
+				session.close();
+			}
+//			HibernateUtil.closeSessionFactory();
 			System.out.println("Session closed");
 		}
 	}
