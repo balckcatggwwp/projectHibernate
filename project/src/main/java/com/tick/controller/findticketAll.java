@@ -44,7 +44,7 @@ public class findticketAll extends HttpServlet {
 			Session session =factory.getCurrentSession();
 			tickservice tservice = new tickservice(session);
 			List<BookticketvuBean> ticks =tservice.findticketAll();
-			System.out.println("afinall");
+			
 //			System.out.println(tick.getHallid());
 //			System.out.println(ticks);
 			request.setAttribute("tickinfo", ticks);

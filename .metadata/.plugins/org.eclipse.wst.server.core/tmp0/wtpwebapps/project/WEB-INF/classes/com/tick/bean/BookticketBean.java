@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity @Table(name = "booktickets")
+@Entity @Table(name = "Booktickets")
 public class BookticketBean implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id@Column(name = "tickid")
@@ -29,16 +29,18 @@ public class BookticketBean implements java.io.Serializable {
 	private int movieid;
 	@Column(name = "tickettypeid")
 	private int tickettypeid;
-	@Column(name = "patout")
+	@Column(name = "payout")
 	private String payout;
-	@Column(name = "startdate")
-	private String startdate;
-	@Column(name = "starttime")
-	private String starttime;
-	@Column(name = "booktype")
-	private String booktype;
-	@Column(name = "moviename")
-	private String moviename;
+	
+	
+//	@Column(name = "startdate")
+//	private String startdate;
+//	@Column(name = "starttime")
+//	private String starttime;
+//	@Column(name = "booktype")
+//	private String booktype;
+//	@Column(name = "moviename")
+//	private String moviename;
 	
 	
 	public BookticketBean(String orderid, int userid, int showtimeid, String seatid, int hallid, int onemoney,
@@ -56,12 +58,9 @@ public class BookticketBean implements java.io.Serializable {
 	}
 	
 	
-	public BookticketBean(String orderid, int userid, int showtimeid, String seatid, int hallid, int onemoney,
-			int movieid, int tickettypeid, String payout, String startdate, String starttime, String booktype,
-			String moviename) {
+	public BookticketBean(int showtimeid, String seatid, int hallid, int onemoney, int movieid, int tickettypeid,
+			String payout) {
 		super();
-		this.orderid = orderid;
-		this.userid = userid;
 		this.showtimeid = showtimeid;
 		this.seatid = seatid;
 		this.hallid = hallid;
@@ -69,35 +68,34 @@ public class BookticketBean implements java.io.Serializable {
 		this.movieid = movieid;
 		this.tickettypeid = tickettypeid;
 		this.payout = payout;
-		this.startdate = startdate;
-		this.starttime = starttime;
-		this.booktype = booktype;
-		this.moviename = moviename;
 	}
-	public String getStartdate() {
-		return startdate;
-	}
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-	public String getStarttime() {
-		return starttime;
-	}
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
-	}
-	public String getMoviename() {
-		return moviename;
-	}
-	public void setMoviename(String moviename) {
-		this.moviename = moviename;
-	}
-	public String getBooktype() {
-		return booktype;
-	}
-	public void setBooktype(String booktype) {
-		this.booktype = booktype;
-	}
+	public BookticketBean() { }
+
+//	
+//	public String getStartdate() {
+//		return startdate;
+//	}
+//	public void setStartdate(String startdate) {
+//		this.startdate = startdate;
+//	}
+//	public String getStarttime() {
+//		return starttime;
+//	}
+//	public void setStarttime(String starttime) {
+//		this.starttime = starttime;
+//	}
+//	public String getMoviename() {
+//		return moviename;
+//	}
+//	public void setMoviename(String moviename) {
+//		this.moviename = moviename;
+//	}
+//	public String getBooktype() {
+//		return booktype;
+//	}
+//	public void setBooktype(String booktype) {
+//		this.booktype = booktype;
+//	}
 	public int getTickid() {
 		return tickid;
 	}

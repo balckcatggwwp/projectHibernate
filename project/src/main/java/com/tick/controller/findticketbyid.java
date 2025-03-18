@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.tick.bean.BookticketvuBean;
-import com.tick.bean.ShowtimeBean;
 import com.tick.service.tickservice;
 import com.tick.util.HibernateUtil;
 

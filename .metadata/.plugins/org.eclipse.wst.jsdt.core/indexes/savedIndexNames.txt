@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-INDEX VERSION 1.4+C:\Users\User\Desktop\GitHub專題\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1464158971.index
-916324816.index
-1558120590.index
-562475941.index
-215390536.index
+INDEX VERSION 1.4+C:\Action\projectHibernate\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2733794369.index
+360355054.index
+2002315357.index
+2173755489.index
 3581163120.index
 685498803.index
-=======
-INDEX VERSION 1.4+C:\Action\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-906670749.index
-784541232.index
-684797078.index
-2705810661.index
->>>>>>> origin/master
+3047429442.index
