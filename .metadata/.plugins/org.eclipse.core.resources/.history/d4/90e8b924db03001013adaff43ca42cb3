@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.datasource">java:comp/env/connectSQLServerJndi</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		
+		<mapping class="com.tick.bean.BookticketBean"/>
+		<mapping class="com.tick.bean.BookticketvuBean"/>
+		<mapping class="com.tick.bean.BookTypeBean"/>
+		<mapping class="com.tick.bean.HallsBean"/>
+		<mapping class="com.tick.bean.MovieInfoBean"/>
+		<mapping class="com.tick.bean.onofflineBean"/>
+		<mapping class="com.tick.bean.ShowtimeBean"/>
+		
+		<mapping class="com.movie.bean.InfoBean"/>
+		
+		
+		
+	</session-factory>
+</hibernate-configuration> 

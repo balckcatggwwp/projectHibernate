@@ -1,0 +1,6 @@
+127.0.0.1 - - [18/Mar/2025:14:59:41 +0800] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [18/Mar/2025:14:59:41 +0800] "GET /HibernateWebProject/DemoHouseServletAction.do HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [18/Mar/2025:14:59:41 +0800] "GET /favicon.ico HTTP/1.1" 404 763
+127.0.0.1 - - [18/Mar/2025:17:25:09 +0800] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [18/Mar/2025:17:25:09 +0800] "GET /project/WEB-INF/classes/com/movie/controller/findAll.java HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [18/Mar/2025:17:25:09 +0800] "GET /favicon.ico HTTP/1.1" 404 763

@@ -1,0 +1,9 @@
+package com.movie.bean;
+
+public class infoBean {
+
+	public infoBean() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

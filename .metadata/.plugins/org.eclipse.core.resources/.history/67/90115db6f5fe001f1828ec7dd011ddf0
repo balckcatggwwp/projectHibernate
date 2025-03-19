@@ -1,9 +1,0 @@
-package tw.black.model;
-
-public class Role {
-
-	public Role() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,12 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=origin/master
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
-<<<<<<< HEAD
-IMPORT_FILES_AND_FOLDERS_TYPE=23,1
-eclipse.preferences.version=1
-platformState=1758725280239989
-=======
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 eclipse.preferences.version=1
-platformState=1758724964335685
->>>>>>> origin/master
+platformState=1758724656288792
 quickStart=false
 tipsAndTricks=true

@@ -1,9 +1,0 @@
-package tw.black.model;
-
-public class StockTransaction {
-
-	public StockTransaction() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

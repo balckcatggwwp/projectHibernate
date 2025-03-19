@@ -1,0 +1,43 @@
+package com.movie.controller;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.movie.bean.InfoBean;
+import com.movie.model.IInfoService;
+import com.movie.model.InfoService;
+import com.tick.util.HibernateUtil;
+
+public class findAll {
+
+	public static void main(String[] args) {
+		System.out.println("1");
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		System.out.println("2");
+		Session session = factory.getCurrentSession();
+		System.out.println("3");
+
+		try {
+			session.beginTransaction();
+			
+			IInfoService infoService = new InfoService(session);
+			
+			List<InfoBean> result = infoService.findAll();
+			
+			System.out.println("123");
+			for(InfoBean infoBean : result) {
+				System.out.println(infoBean);
+			}
+			
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}finally {
+			HibernateUtil.closeSessionFactory();
+		}
+	}
+
+}
