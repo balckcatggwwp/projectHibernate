@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.google.gson.Gson;
-import com.tick.bean.BookticketvuBean;
 import com.tick.bean.ShowtimeBean;
 import com.tick.service.tickservice;
 import com.tick.util.HibernateUtil;
@@ -38,6 +37,7 @@ public class findshowtime extends HttpServlet {
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String showtime = request.getParameter("startdate");
+		System.out.println(showtime);
 		try {
 			SessionFactory factory = HibernateUtil.getSessionFactory();
 			Session session =factory.getCurrentSession();

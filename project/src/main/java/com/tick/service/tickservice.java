@@ -56,7 +56,13 @@ public class tickservice implements ItickService{
 	//查日期
 	@Override
 	public List<ShowtimeBean> findticketbystartdate(String startdate){
+		
+
 		return tickDao.findticketbystartdate(startdate);
+	};
+	@Override
+	public List<BookticketvuBean> findticketbystartdateta(String startdate){
+		return tickDao.findticketbystartdateta(startdate);
 	};
 	//查廳
 	@Override
@@ -87,12 +93,12 @@ public class tickservice implements ItickService{
 	//查廳
 	@Override
 	public List<HallsBean> findhalls(){
-		return tickDao.findhalls()
-				;
+		return tickDao.findhalls();
+				
 	};
 	//查座位
 	@Override
-	public List<BookticketBean> findseatbytime(String showtimeid,String hallid ){
+	public List<BookticketBean> findseatbytime(int showtimeid,int hallid ){
 		return tickDao.findseatbytime(showtimeid, hallid);
 	};
 	//查票種

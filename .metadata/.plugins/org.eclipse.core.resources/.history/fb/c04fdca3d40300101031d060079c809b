@@ -1,0 +1,57 @@
+package com.tick.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.project.dao.Dao;
+
+@WebServlet("/Updatea")
+public class Updatea extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public Updatea() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//	String orderid = request.getParameter("orderid");
+		
+//		String userid = request.getParameter("userid");
+//		Integer user = Integer.parseInt(userid);
+		String tickid = request.getParameter("tickid");
+		Integer tickidint = Integer.parseInt(tickid);
+		String Seatid = request.getParameter("Seatid");
+//		Integer seat = Integer.parseInt(Seatid);
+		
+		String starttime = request.getParameter("starttime");
+		Integer time = Integer.parseInt(starttime);
+		
+		String hallid = request.getParameter("hallid");
+		Integer hall = Integer.parseInt(hallid);
+		
+		String tickettypeid = request.getParameter("tickettypeid");
+		Integer type = Integer.parseInt(tickettypeid);
+		
+		String movieid = request.getParameter("movieid");
+		Integer movie = Integer.parseInt(movieid);
+		
+		String onemoney = request.getParameter("onemoney");
+		Integer money = Integer.parseInt(onemoney);
+		
+		String payout = request.getParameter("payout");
+		Dao dao =new Dao();
+		//System.out.println(orderid);
+		dao.updateticket(time,Seatid,hall,money,movie,type,payout,tickidint);
+		request.getRequestDispatcher("findticketAll").forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

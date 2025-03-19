@@ -13,7 +13,6 @@ import org.hibernate.SessionFactory;
 
 import com.google.gson.Gson;
 
-import com.tick.bean.HallsBean;
 import com.tick.bean.MovieInfoBean;
 import com.tick.service.tickservice;
 import com.tick.util.HibernateUtil;

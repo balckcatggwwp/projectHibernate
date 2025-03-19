@@ -5,6 +5,7 @@
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="JavaElementSearchActions">
+<<<<<<< HEAD
 	</section>
 	<section name="NewPackageCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="706"/>
@@ -43,10 +44,15 @@
 		<item key="create_unimplemented" value="true"/>
 	</section>
 	<section name="SourceActionDialog.methods">
+=======
+	</section>
+	<section name="SourceActionDialog.constructors">
+>>>>>>> 6dc526cb50c55c39a7dc21e47fc7d5b7d18b97a6
 		<item key="VisibilityModifier" value="1"/>
 		<item key="FinalModifier" value="false"/>
 		<item key="SynchronizedModifier" value="false"/>
 		<item key="Comments" value="false"/>
+<<<<<<< HEAD
 		<item key="LimitElements" value="false"/>
 		<item key="IgnoreDefault" value="true"/>
 		<item key="StringStyle" value="0"/>
@@ -77,6 +83,17 @@
 		<item key="DIALOG_Y_ORIGIN" value="68"/>
 		<item key="DIALOG_WIDTH" value="516"/>
 		<item key="DIALOG_HEIGHT" value="691"/>
+=======
+	</section>
+	<section name="GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="692"/>
+		<item key="DIALOG_Y_ORIGIN" value="76"/>
+		<item key="DIALOG_WIDTH" value="552"/>
+		<item key="DIALOG_HEIGHT" value="678"/>
+>>>>>>> 6dc526cb50c55c39a7dc21e47fc7d5b7d18b97a6
 		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
 	</section>
 </section>

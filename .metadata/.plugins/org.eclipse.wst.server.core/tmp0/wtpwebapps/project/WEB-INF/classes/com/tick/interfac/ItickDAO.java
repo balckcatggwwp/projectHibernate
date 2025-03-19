@@ -28,6 +28,7 @@ public interface ItickDAO {
 	public List<BookticketvuBean> findticketbyuserid(String userid);
 	//查日期
 	public List<ShowtimeBean> findticketbystartdate(String startdate);
+	public List<BookticketvuBean> findticketbystartdateta(String startdate);
 	//查廳
 	public List<BookticketvuBean> findticketbyhall(String hallid);
 	//查moviename
@@ -41,7 +42,7 @@ public interface ItickDAO {
 	//查廳
 	public List<HallsBean> findhalls();
 	//查座位
-	public List<BookticketBean> findseatbytime(String showtimeid,String hallid );
+	public List<BookticketBean> findseatbytime(int showtimeid,int hallid );
 	//查票種
 	public List<BookTypeBean> findtype();
 	//查電影

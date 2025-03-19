@@ -13,8 +13,6 @@ import org.hibernate.SessionFactory;
 
 import com.google.gson.Gson;
 import com.tick.bean.BookticketBean;
-import com.tick.bean.BookticketvuBean;
-import com.tick.bean.HallsBean;
 import com.tick.service.tickservice;
 import com.tick.util.HibernateUtil;
 
@@ -38,12 +36,17 @@ public class findseatbytimehall extends HttpServlet {
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String showtimeid = request.getParameter("showtimeid");
+		System.out.println();
+		Integer showtimeidi = Integer.parseInt(showtimeid);
 		String hallid = request.getParameter("hallid");
+		Integer hallidi = Integer.parseInt(hallid);
+		
 		try {
 			SessionFactory factory = HibernateUtil.getSessionFactory();
 			Session session =factory.getCurrentSession();
 			tickservice tservice = new tickservice(session);
-			List<BookticketBean> halls = tservice.findseatbytime(showtimeid, hallid);
+			List<BookticketBean> halls = tservice.findseatbytime(showtimeidi, hallidi);
+			System.out.println(halls+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 //			Dao dao =new Dao();
 //			List<BookticketBean> seats =dao.findseatbytime(showtimeid,hallid);
 			

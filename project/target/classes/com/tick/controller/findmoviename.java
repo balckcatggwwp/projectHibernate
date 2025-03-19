@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.google.gson.Gson;
-import com.tick.bean.ShowtimeBean;
 import com.tick.bean.onofflineBean;
 import com.tick.service.tickservice;
 import com.tick.util.HibernateUtil;

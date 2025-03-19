@@ -1,5 +1,11 @@
 INDEX VERSION 1.134
+<<<<<<< HEAD
 C:\projectHibernate\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\340056664.index
 \project\src\main\java
 C:\projectHibernate\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2733794369.index
+=======
+C:\Action\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2733794369.index
+\project\src\main\java
+C:\Action\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\340056664.index
+>>>>>>> 6dc526cb50c55c39a7dc21e47fc7d5b7d18b97a6
 \project\src\main\java
