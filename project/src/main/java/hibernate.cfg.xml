@@ -25,7 +25,7 @@
 		<mapping class="com.movie.bean"/>
 		<mapping class="com.movie.bean.InfoBean"/>
 		<mapping class="com.tick.bean."/>
-		<mapping class="com.tick.bean.aaaa"/>
+		
 		
 		
 	</session-factory>
