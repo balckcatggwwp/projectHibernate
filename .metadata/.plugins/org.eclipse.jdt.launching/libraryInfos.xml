@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-<<<<<<< HEAD
-=======
-    <libraryInfo home="F:\Java專用\Java開發環境\JDK17" version="17.0.13"/>
->>>>>>> 6dc526cb50c55c39a7dc21e47fc7d5b7d18b97a6
-    <libraryInfo home="C:\JDK17" version="17.0.13"/>
     <libraryInfo home="C:\Action\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551\jre" version="21.0.4"/>
 </libraryInfos>
