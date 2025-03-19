@@ -1,7 +1,0 @@
-package tw.black.util;
-
-import jakarta.servlet.ServletContextListener;
-
-public class SessionFactoryListener implements ServletContextListener {
-
-}

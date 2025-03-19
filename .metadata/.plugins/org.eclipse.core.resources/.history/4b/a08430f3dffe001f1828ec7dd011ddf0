@@ -1,9 +1,0 @@
-package tw.black.model;
-
-public class BookDao {
-
-	public BookDao() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

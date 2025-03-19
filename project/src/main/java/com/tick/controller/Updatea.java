@@ -23,6 +23,7 @@ public class Updatea extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processAction(request,response);
 	}
 
 
@@ -31,9 +32,9 @@ public class Updatea extends HttpServlet {
 		processAction(request,response);
 	}
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
+		  
 		// TODO Auto-generated method stub
 		//	String orderid = request.getParameter("orderid");
-		processAction(request,response);
 //		String userid = request.getParameter("userid");
 //		Integer user = Integer.parseInt(userid);
 		String tickid = request.getParameter("tickid");
@@ -61,6 +62,7 @@ public class Updatea extends HttpServlet {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session =factory.getCurrentSession();
 		tickservice tservice = new tickservice(session);
+		
 //		BookticketBean bean = new BookticketBean(time, Seatid, hall, money, movie, type, payout);
 		tservice.updateticket(time, Seatid, hall, money, movie, type, payout,tickidint);
 		
@@ -69,13 +71,10 @@ public class Updatea extends HttpServlet {
 //		dao.updateticket(time,Seatid,hall,money,movie,type,payout,tickidint);
 		try {
 			request.getRequestDispatcher("findticketAll").forward(request, response);
-		} catch (ServletException e) {
+		} catch (ServletException  |IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 	}
 

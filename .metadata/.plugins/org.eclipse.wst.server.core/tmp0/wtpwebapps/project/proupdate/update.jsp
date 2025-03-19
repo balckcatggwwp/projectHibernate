@@ -415,6 +415,7 @@ html {
         function loadseat(){
         	let selecttime=$("#time").val();
          	let selecthall=$("#halls").val();
+             let seats='${tickinfo.seatid}';
         	
          	$("#seat").empty();
          	let soldSeats=[];
@@ -435,12 +436,12 @@ html {
              }
          }
          // 取得 <select> 元素
-         let select = document.getElementById("seat");
+        // let select = document.getElementById("seat");
          // 過濾出尚未售出的座位
-         let availableSeats = allSeats.filter(seat => !soldSeats.includes(seat));
+         let availableSeats = allSeats.filter(seat => !soldSeats.includes(seat) ||seat ===seats);
          // 生成 <option> 並添加到 <select>
          availableSeats.forEach( function(seat) {
-             let seats='${tickinfo.seatid}'
+             console.log(seats)
              let selectse = (seats == seat) ? 'selected':'';
              $('#seat').append(`<option value="\${seat}" \${selectse}>\${seat}</option>`)
  			
@@ -481,7 +482,7 @@ html {
                     type: 'GET',
                     success: function (respones) {
 						$.each(respones,function(i,e){
-							let ticktyp=${tickinfo.tickettypeid}+1;/////////////////////////////////////
+							let ticktyp=${tickinfo.tickettypeid};/////////////////////////////////////
 							
 							//console.log(ticktyp)
 							let se=e.tickettypeid

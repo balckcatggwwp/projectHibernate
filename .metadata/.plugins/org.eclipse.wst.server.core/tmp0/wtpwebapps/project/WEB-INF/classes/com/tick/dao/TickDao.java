@@ -31,9 +31,16 @@ public class TickDao implements ItickDAO{
 	//刪
 	@Override
 	public void delticket(Integer tickid) {
-		BookticketBean bean= session.get(BookticketBean.class,tickid);
-		if(bean!=null) {
-			session.remove(bean);
+		try {
+			BookticketBean bean= session.get(BookticketBean.class,tickid);
+			if(bean!=null) {
+				session.remove(bean);
+				session.flush();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	};
 	//改
@@ -46,29 +53,32 @@ public class TickDao implements ItickDAO{
 			bean.setHallid(hall);
 			bean.setOnemoney(money);
 			bean.setMovieid(movie);
-			bean.setTickettypeid(tickid);
+			bean.setTickettypeid(type);
 			bean.setPayout(payout);
+			session.flush();
 		}
 	};
 	//查訂票id
 	@Override
 	public List<BookticketvuBean> findticketbyid(String tickid){
 		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
-		query.setParameter("n", tickid);
+		Integer s = Integer.parseInt(tickid);
+		query.setParameter("n", s);
 		return query.list();
 	};
 	//查訂單編號
 	@Override
 	public List<BookticketvuBean> findticketbyorderid(String orderid){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where orderid =:n",BookticketvuBean.class);
 		query.setParameter("n", orderid);
 		return query.list();
 	};
 	//查會員id
 	@Override
 	public List<BookticketvuBean> findticketbyuserid(String userid){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
-		query.setParameter("n", userid);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where userid =:n",BookticketvuBean.class);
+		Integer s = Integer.parseInt(userid);
+		query.setParameter("n", s);
 		return query.list();
 	};
 	//查日期
@@ -87,28 +97,29 @@ public class TickDao implements ItickDAO{
 	};
 	@Override
 	public List<BookticketvuBean> findticketbystartdateta(String startdate){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where startdate =:n",BookticketvuBean.class);
 		query.setParameter("n", startdate);
 		return query.list();
 	};
 	//查廳
 	@Override
 	public List<BookticketvuBean> findticketbyhall(String hallid){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
-		query.setParameter("n", hallid);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where hallid =:n",BookticketvuBean.class);
+		Integer s = Integer.parseInt(hallid);
+		query.setParameter("n", s);
 		return query.list();
 	};
 	//查moviename
 	@Override
 	public List<BookticketvuBean> findticketbyname(String findname){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where moviename=:n",BookticketvuBean.class);
 		query.setParameter("n", findname);
 		return query.list();
 	};
 	//查是否付款
 	@Override
 	public List<BookticketvuBean> findticketbypay(String payout){
-		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where tickid =:n",BookticketvuBean.class);
+		Query<BookticketvuBean> query = session.createQuery("from BookticketvuBean where payout =:n",BookticketvuBean.class);
 		query.setParameter("n", payout);
 		return query.list();
 	};
@@ -158,8 +169,15 @@ public class TickDao implements ItickDAO{
 	//查票種
 	@Override
 	public List<BookTypeBean> findtype(){
-		Query<BookTypeBean> query = session.createQuery("from BooktypeBean",BookTypeBean.class);
-		return query.list();
+		try {
+			Query<BookTypeBean> query = session.createQuery("from BookTypeBean",BookTypeBean.class);
+			return query.list();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
 	};
 	//查電影
 	@Override

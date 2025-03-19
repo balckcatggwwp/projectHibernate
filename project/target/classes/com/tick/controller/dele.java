@@ -31,7 +31,8 @@ public class dele extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
+		processAction(request,response);
 	}
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
