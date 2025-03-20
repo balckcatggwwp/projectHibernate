@@ -45,4 +45,9 @@ public class InfoService implements IInfoService{
 			Date releaseDate, String status, String movieDescription, String image, String trailer) {
 		return infoDao.update(id, movieName, rating, genre, director, actor, runtime, releaseDate, status, movieDescription, image, trailer);
 	}
+	
+	@Override
+	public List<InfoBean> findByName(String key) {
+		return infoDao.findByName(key);
+	}
 }

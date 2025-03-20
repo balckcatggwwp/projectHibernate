@@ -9,6 +9,7 @@ public interface IInfoDao {
 
 	public List<InfoBean> findAll();
 	public List<InfoBean> findByKey(String key);
+	public List<InfoBean> findByName(String key);
 	public InfoBean findById(Integer key);
 	public InfoBean insert(InfoBean infoBean);
 	public boolean delete(Integer id);

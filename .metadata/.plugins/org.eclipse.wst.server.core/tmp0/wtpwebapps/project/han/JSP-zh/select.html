@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-TW" translate="no">
+
+<head>
+    <meta name="google" content="notranslate">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理</title>
+    <style>
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-image: url('../images/blackandwhite.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        body {
+            background: linear-gradient(to right, #A6A6A6, #FFFFFF);
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+
+            font-size: 150px;
+            font-family: 新細明體;
+            text-shadow: 7px 7px 0px rgba(41, 41, 41, 0.3);
+        }
+
+        #title {
+            display: flex;
+            justify-content: center;
+        }
+
+        #select {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+        }
+
+        span {
+            font-size: 24px;
+        }
+
+        #select form {
+            display: flex;
+            align-items: center;
+        }
+
+        #key {
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        input:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+
+        a {
+            font-size: 24px
+        }
+
+        #link {
+            position: absolute;
+            text-align: right;
+            right: 20px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="title">
+            <h1>電影查詢</h1>
+        </div>
+        <div id="select">
+            <form action="../../SelectKey">
+                <span>關鍵字:</span><input type="text" name="keyword" id="key">
+                <button style="margin: 5px; height: 25px;" type="submit">查詢</button>
+            </form>
+        </div>
+        <div id="link">
+            <a href="Insert.html">新增資料</a><br><br>
+            <a href="../../GetAllInfo">查看所有資料</a><br><br>
+            <a href="">會員</a><span> </span><a href="">訂票</a><span> </span><a href="">菜單</a><span> </span><a
+                href="">公告</a>
+        </div>
+    </div>
+    <script>
+        const key = document.querySelector("#key")
+        key.focus();
+    </script>
+</body>
+
+</html>

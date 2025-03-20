@@ -81,4 +81,13 @@ public class InfoDao implements IInfoDao {
 		return resultBean;
 	}
 	
+	@Override
+	public List<InfoBean> findByName(String key) {	
+		String sql = "SELECT * FROM info WHERE movieName = :key";
+		Query<InfoBean> query = session.createNativeQuery(sql, InfoBean.class);
+	    query.setParameter("key", key);  
+	    return query.list();
+		
+	}
+	
 }
