@@ -1,0 +1,15 @@
+127.0.0.1 - - [23/Mar/2025:08:59:56 +0800] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:08:59:57 +0800] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:14 +0800] "POST /project/InsertM HTTP/1.1" 200 1339
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:20 +0800] "GET /project/GetAllM HTTP/1.1" 200 21159
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:20 +0800] "GET /project/hw2/uploads/%E4%B8%8A%E8%AA%B2%E7%94%A81.jpg HTTP/1.1" 200 113159
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:23 +0800] "GET /project/hw2/Updatemovie.html?menu_name=%E6%82%9F%E7%A9%BA HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:23 +0800] "GET /project/GetMenuItems HTTP/1.1" 200 5258
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:24 +0800] "GET /project/GetMenuItems?menu_name=%E6%82%9F%E7%A9%BA&t=1742691623416 HTTP/1.1" 200 172
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:37 +0800] "POST /project/UpdateM HTTP/1.1" 200 1411
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:38 +0800] "GET /project/hw2/Updatemovie.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:38 +0800] "GET /project/GetMenuItems HTTP/1.1" 200 5251
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:41 +0800] "GET /project/GetAllM HTTP/1.1" 200 21152
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:50 +0800] "POST /project/DeleteM HTTP/1.1" 200 59
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:00:52 +0800] "GET /project/GetAllM HTTP/1.1" 200 20622
+0:0:0:0:0:0:0:1 - - [23/Mar/2025:09:01:22 +0800] "GET /project/findticketAll HTTP/1.1" 200 17635
