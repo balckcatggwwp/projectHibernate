@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>查詢員工</title>
+</head>
+<body>
+    <h2>查詢員工資料</h2>
+    <form action="GetEmployee" method="get">
+        <label>員工編號:</label>
+        <input type="text" name="empno" required><br>
+        <input type="submit" value="查詢">
+    </form>
+</body>
+</html>

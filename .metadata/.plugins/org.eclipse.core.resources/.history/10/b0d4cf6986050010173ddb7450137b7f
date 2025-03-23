@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>新增員工</title>
+</head>
+<body>
+    <h2>新增員工</h2>
+    <form action="/HomeWork2/Insert" method="post">
+
+        <label>員工編號:</label>
+        <input type="number" name="empno" required><br>
+
+        <label>姓名:</label>
+        <input type="text" name="ename" required><br>
+
+        <label>入職日期:</label>
+        <input type="date" name="hiredate" required><br>
+
+        <label>薪水:</label>
+        <input type="number" name="salary" required><br>
+
+        <label>部門編號:</label>
+        <input type="text" name="deptno" required><br>
+
+        <label>職稱:</label>
+        <input type="text" name="title" required><br>
+
+        <input type="submit" value="新增">
+    </form>
+</body>
+</html>

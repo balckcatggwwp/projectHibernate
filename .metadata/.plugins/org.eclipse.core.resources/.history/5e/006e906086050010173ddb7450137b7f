@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>刪除員工</title>
+</head>
+<body>
+    <h2>刪除員工</h2>
+    <form action="/HomeWork2/hw2/Delete" method="post">
+        <label>員工編號:</label>
+        <input type="text" name="empno" required><br>
+        <input type="submit" value="刪除">
+    </form>
+</body>
+</html>

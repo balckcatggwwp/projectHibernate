@@ -1,0 +1,46 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.ispan.bean.EmpBean" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>修改員工資料</title>
+</head>
+<body>
+    <h2>修改員工資料</h2>
+    <%
+        Boolean success = (Boolean) request.getAttribute("success");
+        String errorMessage = (String) request.getAttribute("errorMessage");
+        EmpBean emp = (EmpBean) request.getAttribute("emp");
+
+        if (errorMessage != null) {
+    %>
+        <p style="color:red;"><%= errorMessage %></p>
+    <% } else if (success != null && success) { %>
+        <p style="color:green;">員工資料更新成功！</p>
+    <% } %>
+
+    <form action="<%= request.getContextPath() %>/hw2/Update" method="post">
+        <label>員工編號:</label>
+        <input type="text" name="empno" value="<%= emp != null ? emp.getEmpno() : "" %>" readonly><br>
+
+        <label>姓名:</label>
+        <input type="text" name="ename" value="<%= emp != null ? emp.getEname() : "" %>" required><br>
+
+        <label>入職日期:</label>
+        <input type="date" name="hiredate" value="<%= emp != null ? emp.getHiredate().toString() : "" %>" required><br>
+
+        <label>薪水:</label>
+        <input type="text" name="salary" value="<%= emp != null ? emp.getSalary() : "" %>" required><br>
+
+        <label>部門編號:</label>
+        <input type="text" name="deptno" value="<%= emp != null ? emp.getDeptno() : "" %>" required><br>
+
+        <label>職稱:</label>
+        <input type="text" name="title" value="<%= emp != null ? emp.getTitle() : "" %>" required><br>
+
+        <input type="submit" value="更新">
+    </form>
+    <a href="<%= request.getContextPath() %>/hw2/Update.html" class="btn">返回查詢頁面</a>
+</body>
+</html>

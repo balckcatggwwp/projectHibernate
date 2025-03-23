@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>修改員工資料</title>
+</head>
+<body>
+    <h2>查詢要修改的員工</h2>
+    <form action="/HomeWork2/hw2/Update" method="get">
+        <label>員工編號:</label>
+        <input type="text" name="empno" required><br>
+        <input type="submit" value="查詢">
+    </form>
+</body>
+</html>

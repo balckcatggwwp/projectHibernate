@@ -1,0 +1,138 @@
+package com.menu.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
+import com.menu.bean.MenuBean;
+import com.menu.model.movietheaterDao;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+
+@WebServlet("/UpdateM")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+                 maxFileSize = 1024 * 1024 * 10, // 10MB
+                 maxRequestSize = 1024 * 1024 * 50) // 50MB
+public class UpdateServ extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private movietheaterDao movieDao;
+
+    @Override
+    public void init() throws ServletException {
+        movieDao = new movietheaterDao();
+    }
+
+    // **處理 GET 請求 - 顯示更新頁面**
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding(StandardCharsets.UTF_8.name()); // ✅ 防止編碼錯誤
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        
+        String menuName = request.getParameter("menu_name");
+//        String description = request.getParameter("description");
+
+        if (menuName == null || menuName.isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/hw2/Updatemovie.html");
+            return;
+        }
+
+        try {
+            MenuBean mn = movieDao.getMenuByName(menuName);
+//            mn.setDescription(description);
+            if (mn == null) {
+                request.setAttribute("errorMessage", "❌ 找不到菜單名稱：" + menuName);
+            } else {
+                request.setAttribute("mn", mn);
+            }
+
+            request.getRequestDispatcher("/hw2/Updatemovie.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/hw2/Updatemovie.html");
+        }
+    }
+
+    // **處理 POST 請求 - 更新菜單**
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding(StandardCharsets.UTF_8.name()); // ✅ 防止編碼錯誤
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        System.out.println(request.getParameter("menu_id"));
+        String menuName = request.getParameter("menu_name");
+        System.out.println("🔧 接收到 menu_name: " + menuName);
+        int stock = 0, unitPrice = 0;
+        String imageUrl = request.getParameter("existing_image_url"); // 預設為原圖片
+        String errorMessage = null;
+
+        try {
+            stock = Integer.parseInt(request.getParameter("stock"));
+        } catch (NumberFormatException e) {
+            errorMessage = "❌ 庫存欄位必須是數字！";
+        }
+
+        try {
+            unitPrice = Integer.parseInt(request.getParameter("unit_price"));
+        } catch (NumberFormatException e) {
+            errorMessage = "❌ 單價欄位必須是數字！";
+        }
+
+        String description = request.getParameter("description");
+        String status = request.getParameter("status");
+        String category = request.getParameter("category");
+
+        // **處理圖片上傳**
+        Part filePart = request.getPart("imageFile");
+        if (filePart != null && filePart.getSize() > 0) {
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+           
+            // **將圖片存到 /hw2/uploads 目錄**
+            String uploadPath = getServletContext().getRealPath("/hw2/uploads");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) uploadDir.mkdirs();
+
+            String filePath = uploadPath + File.separator + fileName;
+            filePart.write(filePath);   
+            // **存入資料庫的 image_url 只存相對網址**
+            imageUrl = "/hw2/uploads/" + fileName;
+        }
+        
+        // **如果有錯誤，回到 Update 頁面**
+        if (errorMessage != null) {
+            request.setAttribute("errorMessage", errorMessage);
+            request.getRequestDispatcher("/hw2/Updatemovie.jsp").forward(request, response);
+            return;
+        }
+
+        // **創建 MenuBean 並設置資料**
+        MenuBean mn = new MenuBean();
+        mn.setMenu_id(menu_id);
+        mn.setMenuName(menuName);
+        mn.setStock(stock);
+        mn.setImageUrl(imageUrl);
+        mn.setUnitPrice(unitPrice);
+        mn.setDescription(description);
+        mn.setStatus(status);
+        mn.setCategory(category);
+
+        // **更新資料庫**
+        boolean success = false;
+        try {
+            success = movieDao.updateMenu(mn);
+            if (!success) {
+                errorMessage = "❌ 更新失敗，菜單名不存在！";
+            }
+        } catch (Exception e) {
+            errorMessage = "❌ 資料庫錯誤：" + e.getMessage();
+            e.printStackTrace();
+        }
+
+        request.setAttribute("success", success);
+        request.setAttribute("errorMessage", errorMessage);
+        request.getRequestDispatcher("/hw2/Updatemovie.jsp").forward(request, response);
+    }
+}

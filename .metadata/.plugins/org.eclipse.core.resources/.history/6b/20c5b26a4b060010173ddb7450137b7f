@@ -1,0 +1,67 @@
+package com.menu.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.naming.NamingException;
+
+import com.menu.model.movietheaterDao;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/DeleteM")
+public class DeleteServ extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private movietheaterDao menuDAO; 
+
+    @Override
+    public void init() throws ServletException {
+        try {
+            menuDAO = new movietheaterDao();
+        } catch (Exception e) {
+            throw new ServletException("❌ DAO 初始化失敗", e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        
+        String menuName = request.getParameter("menu_name");
+        boolean success = false;
+        String errorMessage = null;
+
+        if (menuName == null || menuName.trim().isEmpty()) {
+            errorMessage = "❌ 錯誤: 請提供有效的菜單名稱";
+        } else {
+            try {
+                success = menuDAO.deleteMenu(menuName);
+                if (!success) {
+                    errorMessage = "❌ 錯誤: 該菜單不存在或刪除失敗";                  
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                errorMessage = "❌ 資料庫錯誤：" + e.getMessage();
+            }
+        }
+
+        // ✅ 轉發至 `deletemovie.jsp`，顯示成功/失敗結果
+//        request.setAttribute("success", success);
+//        request.setAttribute("errorMessage", errorMessage);
+//        response.getWriter().write("{\"success\": " + success + ", \"message\": \"" + (success ? "刪除成功" : errorMessage) + "\"}");
+//    
+//        request.getRequestDispatcher("/hw2/Deletemovie.jsp").forward(request, response);
+        
+     // ✅ 回傳 JSON
+        try (PrintWriter out = response.getWriter()) {
+            out.write("{\"success\": " + success + ", \"message\": \"" + (success ? "✅ 刪除成功" : errorMessage) + "\"}");
+            out.flush();
+        }
+    }
+}

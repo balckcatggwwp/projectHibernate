@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>所有員工</title>
+</head>
+<body>
+    <h2>所有員工列表</h2>
+    <form action="/HomeWork2/hw2/GetAllEmployees" method="get">
+        <input type="submit" value="查詢所有員工">
+    </form>
+</body>
+</html>

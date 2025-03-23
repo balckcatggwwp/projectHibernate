@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增訂單明細</title>
+        <script>
+        function fetchPrice() {
+            let menuName = document.getElementById("menu_name").value;
+            if (menuName.trim() === "") {
+                document.getElementById("purchase_price").value = "";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "GetPriceByMenuName?menu_name=" + encodeURIComponent(menuName), true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("purchase_price").value = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h2>新增訂單明細</h2>
+    
+    <form action="InsertOrderDetails" method="post">
+        <label for="order_id">訂單 ID：</label>
+        <input type="number" id="order_id" name="order_id" required><br><br>
+
+        <label for="menu_name">餐點名稱：</label>
+        <input type="text" id="menu_name" name="menu_name" onblur="fetchPrice()" required><br><br> <!-- ✅ 加入 `onblur` -->
+        <label for="quantity">數量：</label>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <label for="purchase_price">購買價格：</label>
+        <input type="number" id="purchase_price" name="purchase_price" readonly><br><br>
+      
+        <button type="submit">新增訂單</button>
+    </form>
+
+    <br>
+    <a href="InsertOrderDetails.jsp">查看訂單明細結果</a>
+</body>
+</html>

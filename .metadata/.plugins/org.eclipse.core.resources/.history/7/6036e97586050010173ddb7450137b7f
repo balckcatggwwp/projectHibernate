@@ -1,0 +1,29 @@
+<%@page import="com.menu.bean.MenuBean"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>員工查詢結果</title>
+</head>
+<body>
+    <h2>員工查詢結果</h2>
+    <%
+        EmpBean emp = (EmpBean) request.getAttribute("emp");
+        String errorMessage = (String) request.getAttribute("errorMessage");
+        if (errorMessage != null) {
+    %>
+        <p style="color:red;"><%= errorMessage %></p>
+    <% } else if (emp != null) { %>
+        <table border="1">
+            <tr><th>員工編號</th><td><%= emp.getEmpno() %></td></tr>
+            <tr><th>姓名</th><td><%= emp.getEname() %></td></tr>
+            <tr><th>到職日</th><td><%= emp.getHiredate() %></td></tr>
+            <tr><th>薪水</th><td><%= emp.getSalary() %></td></tr>
+            <tr><th>部門編號</th><td><%= emp.getDeptno() %></td></tr>
+            <tr><th>職稱</th><td><%= emp.getTitle() %></td></tr>
+        </table>
+    <% } %>
+    <a href="<%= request.getContextPath() %>/hw2/Insert.html" class="btn">返回新增頁面</a>
+</body>
+</html>

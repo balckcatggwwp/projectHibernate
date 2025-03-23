@@ -1,0 +1,131 @@
+package com.menu.model;
+
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import com.menu.bean.MenuBean;
+import com.menu.interfac.ImenuDAO;
+import com.tick.util.HibernateUtil;
+
+public class movietheaterDao implements ImenuDAO {
+
+    private SessionFactory sessionFactory;
+
+    public movietheaterDao() {
+        this.sessionFactory = HibernateUtil.getSessionFactory();
+    }
+
+    // **新增菜單**
+    @Override
+    public boolean insertMenu(MenuBean menu) {
+        boolean success = false;
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.save(menu);
+            tx.commit();
+            success = true;
+            System.out.println("✅ 新增成功：" + menu.getMenuName());
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            System.out.println("❌ 新增菜單失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    // **更新菜單**
+    @Override
+    public boolean updateMenu(MenuBean menu) {
+        boolean success = false;
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.update(menu);
+            tx.commit();
+            success = true;
+            System.out.println("✅ 更新成功：" + menu.getMenuName());
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            System.out.println("❌ 更新菜單失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    // **刪除菜單**
+    @Override
+    public boolean deleteMenu(String menuName) {
+        boolean success = false;
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            Query<?> query = session.createQuery("DELETE FROM MenuBean WHERE menu_name = :menuName");
+            query.setParameter("menuName", menuName);
+            int rows = query.executeUpdate();
+            tx.commit();
+            success = rows > 0;
+            System.out.println(success ? "✅ 成功刪除菜單：" + menuName : "❌ 刪除失敗，菜單不存在：" + menuName);
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            System.out.println("❌ 刪除菜單失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    // **查詢單筆菜單**
+    @Override
+    public MenuBean getMenuByName(String menuName) {
+        MenuBean menu = null;
+        try (Session session = sessionFactory.openSession()) {
+            Query<MenuBean> query = session.createQuery("FROM MenuBean WHERE menu_name = :menuName", MenuBean.class);
+            query.setParameter("menuName", menuName);
+            menu = query.uniqueResult();
+            if (menu != null) {
+                System.out.println("✅ 查詢成功：" + menuName);
+            } else {
+                System.out.println("❌ 找不到菜單：" + menuName);
+            }
+        } catch (Exception e) {
+            System.out.println("❌ 查詢菜單失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return menu;
+    }
+
+    // **查詢所有菜單**
+    @Override
+    public List<MenuBean> getAllMenus() {
+        List<MenuBean> menuList = null;
+        try (Session session = sessionFactory.openSession()) {
+            Query<MenuBean> query = session.createQuery("FROM MenuBean ORDER BY category, menuName", MenuBean.class);
+            menuList = query.getResultList();
+            System.out.println("✅ 查詢成功，共 " + menuList.size() + " 筆資料");
+        } catch (Exception e) {
+            System.out.println("❌ 查詢所有菜單失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return menuList;
+    }
+
+    // **查詢菜單價格**
+    @Override
+    public int getPriceByMenuName(String menuName) {
+        int price = 0;
+        try (Session session = sessionFactory.openSession()) {
+            Query<Integer> query = session.createQuery("SELECT unit_price FROM MenuBean WHERE menu_name = :menuName", Integer.class);
+            query.setParameter("menuName", menuName);
+            price = query.uniqueResult();
+            System.out.println("✅ 查詢價格成功：" + menuName + " = " + price);
+        } catch (Exception e) {
+            System.out.println("❌ 查詢價格失敗：" + e.getMessage());
+            e.printStackTrace();
+        }
+        return price;
+    }
+
+}

@@ -1,0 +1,25 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>新增員工結果</title>
+</head>
+<body>
+    <h2>新增員工結果</h2>
+    <%
+            Boolean success = (Boolean) request.getAttribute("success");
+            String errorMessage = (String) request.getAttribute("errorMessage");
+
+            if (success != null && success) {
+        %>
+            <p class="success">✅ 員工新增成功！</p>
+        <% } else { %>
+            <p class="error">❌ 新增失敗！錯誤訊息：<%= (errorMessage != null && !errorMessage.isEmpty()) ? errorMessage : "未知錯誤" %></p>
+        <% } %>
+
+        <!-- 🔥 使用 `request.getContextPath()` 避免 404 錯誤 -->
+        <a href="<%= request.getContextPath() %>/hw2/Insert.html" class="btn">返回新增頁面</a>
+</body>
+</body>
+</html>

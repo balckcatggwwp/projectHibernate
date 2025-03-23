@@ -1,0 +1,35 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>刪除員工結果</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; text-align: center; }
+        .container { max-width: 500px; margin: auto; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .btn { display: inline-block; margin-top: 20px; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>刪除員工結果</h2>
+        <%
+            Boolean success = (Boolean) request.getAttribute("success");
+            String errorMessage = (String) request.getAttribute("errorMessage");
+
+            if (success != null && success) {
+        %>
+            <p class="success">✅ 員工刪除成功！</p>
+        <% } else { %>
+            <p class="error">❌ 刪除失敗！錯誤訊息：<%= (errorMessage != null && !errorMessage.isEmpty()) ? errorMessage : "未知錯誤" %></p>
+        <% } %>
+
+        <!-- ✅ 確保返回按鈕指向正確的 `Delete.html` -->
+        <a href="<%= request.getContextPath() %>/hw2/Delete.html" class="btn">返回刪除頁面</a>
+        
+    </div>
+</body>
+</html>

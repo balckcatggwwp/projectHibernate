@@ -1,0 +1,56 @@
+package com.menu.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.naming.NamingException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import com.menu.model.movietheaterDao;
+
+@WebServlet("/GetPriceByMenuName")
+public class GetPriceByMenuName extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private movietheaterDao movieDao; // ✅ 使用 movietheaterDao
+
+    @Override
+    public void init() throws ServletException {
+        try {
+            movieDao = new movietheaterDao(); // ✅ 確保 DAO 正確初始化
+        } catch (Exception e) {
+            throw new ServletException("DAO 初始化失敗", e);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String menuName = request.getParameter("menu_name");
+        PrintWriter out = response.getWriter();
+
+        if (menuName == null || menuName.trim().isEmpty()) {
+            out.print("{\"error\": \"❌ 無效的菜單名稱\"}");
+            out.flush();
+            return;
+        }
+
+        try {
+            int price = movieDao.getPriceByMenuName(menuName);
+            if (price == 0) {
+                out.print("{\"error\": \"❌ 未找到該商品價格\"}");
+            } else {
+                out.print(new Gson().toJson(price));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            out.print("{\"error\": \"❌ 資料庫錯誤\"}");
+        }
+        out.flush();
+    }
+}

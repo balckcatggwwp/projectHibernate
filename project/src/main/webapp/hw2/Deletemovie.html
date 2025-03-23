@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刪除菜單品項</title>
+
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-danger {
+            width: 100%;
+        }
+        .btn-back {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🗑️ 刪除菜單品項</h2>
+        
+        <form action="/HomeWork2/DeleteM" method="post">
+            <!-- 菜單名稱輸入 -->
+            <div class="mb-3">
+                <label for="menu_name" class="form-label">菜單名稱：</label>
+                <input type="text" id="menu_name" name="menu_name" class="form-control" required>
+            </div>
+
+            <!-- 刪除按鈕 -->
+            <button type="submit" class="btn btn-danger">刪除</button>
+            <a href="/HomeWork2/hw2/menupage.html" class="btn btn-secondary btn-back">返回首頁</a>
+           
+        </form>
+    </div>
+
+    <!-- 引入 Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+package com.ispan.dao;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.sql.DataSource;
+import com.google.gson.Gson;
+import com.ispan.bean.MenuBean;
+import jakarta.annotation.Resource;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/GetMenuItems") // ✅ API 路徑不變
+public class GetMenuItemsServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private MenuDAO menuDAO;
+
+    @Resource(name = "jdbc/project2") // ✅ 確保這個名稱對應你的 DataSource
+    private DataSource dataSource;
+    
+    @Override
+    public void init() throws ServletException {
+        try {
+            menuDAO = new MenuDAO();  // ✅ 初始化 DAO，連接 SQL Server
+        } catch (Exception e) {
+            throw new ServletException("❌ 無法連接資料庫", e);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+
+        String menuName = request.getParameter("menu_name");
+
+        try (Connection conn = dataSource.getConnection()) {
+            Gson gson = new Gson();
+
+            if (menuName != null && !menuName.trim().isEmpty()) {
+            	// ✅ 如果有 menu_name，則查詢單一商品
+                MenuBean menu = menuDAO.getMenuByName(menuName); 
+                if (menu != null) {
+                    out.print(gson.toJson(menu));
+                } else {
+                    response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                    out.print("{\"error\": \"❌ 未找到該商品\"}");
+                }
+            } else {
+                // ✅ 如果沒有 menu_name，則回傳所有商品
+                List<MenuBean> menuList = menuDAO.getAllMenuItems();
+                out.print(gson.toJson(menuList));
+            }
+            out.flush();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            out.print("{\"error\": \"❌ 無法取得菜單，請稍後再試！\"}");
+        }
+    }
+}

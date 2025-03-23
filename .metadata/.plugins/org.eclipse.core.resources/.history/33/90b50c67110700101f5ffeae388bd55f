@@ -1,0 +1,39 @@
+package com.ispan.dao;
+
+import java.io.IOException;
+
+import javax.naming.NamingException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/GetPriceByMenuName")
+public class GetPriceByMenuName extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private MenuDAO menuDAO;
+
+    @Override
+    public void init() throws ServletException {
+        try {
+            menuDAO = new MenuDAO();
+        } catch (NamingException e) {
+            throw new ServletException("DAO 初始化失敗", e);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String menuName = request.getParameter("menu_name");
+
+        if (menuName == null || menuName.trim().isEmpty()) {
+            response.getWriter().write("0"); // 預設價格 0
+            return;
+        }
+
+        int price = menuDAO.getPriceByMenuName(menuName);
+        response.getWriter().write(String.valueOf(price)); // 回傳價格
+    }
+}

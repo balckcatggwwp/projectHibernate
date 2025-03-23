@@ -1,0 +1,57 @@
+package com.menu.controller;
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.sql.DataSource;
+import com.google.gson.Gson;
+import com.menu.bean.MenuBean;
+import com.menu.model.movietheaterDao;
+
+import jakarta.annotation.Resource;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/GetMenuItems") // ✅ API 路徑不變
+public class GetMenuItemsServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private movietheaterDao menuDAO;
+
+    @Override
+    public void init() throws ServletException {
+        menuDAO = new movietheaterDao();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
+        String menuName = request.getParameter("menu_name");
+
+
+        if (menuName != null && !menuName.trim().isEmpty()) {
+            MenuBean menu = menuDAO.getMenuByName(menuName);
+            if (menu != null) {
+                out.print(gson.toJson(menu));  // ✅ 回傳單筆資料 (物件)
+            } else {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                out.print("{\"error\": \"❌ 未找到該商品\"}");
+            }
+        } else {
+            List<MenuBean> menuList = menuDAO.getAllMenus();
+            out.print(gson.toJson(menuList));  // ✅ 回傳所有商品 (陣列)
+        }
+        out.flush();
+    }
+}
