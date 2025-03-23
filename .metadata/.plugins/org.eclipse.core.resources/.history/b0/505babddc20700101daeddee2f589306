@@ -1,0 +1,36 @@
+package com.movieNews.service;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+import com.movieNews.bean.MovieNewsBean;
+import com.movieNews.dao.movieNewsDao;
+
+@WebServlet("/GetAllNews")
+public class GetAllNews extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public GetAllNews() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		movieNewsDao dao = new movieNewsDao();
+		List<MovieNewsBean> news = dao.getAllNews();
+		
+		request.setAttribute("news", news);
+		request.getRequestDispatcher("/movieNews/newsList.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

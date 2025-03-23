@@ -1,0 +1,105 @@
+#bodddd {
+    width: 90%;
+    height: 100px;
+    float: right;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #FFD700;
+    background-color: #222;
+    width: 80%;
+    height: 60px;
+    margin: 5px 0;
+    margin-left: 10%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-content: center;
+}
+
+li:hover {
+    background-color: #FFCC00;
+    color: #000;
+    transform: scale(1.1);
+}
+
+li i {
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+li:active {
+    position: relative;
+    top: 2px;
+    background-color: #B22222;
+    color: #FFF;
+}
+
+figure {
+    float: left;
+    background-color: #000;
+    padding: 20px 0;
+    font-size: 100px;
+    color: #FFD700;
+    width: 10%;
+    height: 1000x;
+    text-align: center;
+}
+
+.one {
+    margin-top: 100px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+}
+
+li a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+
+}
+
+li a:active {
+    position: relative;
+    top: 2px;
+    background-color: #B22222;
+    color: white;
+}
+
+.clock {
+    color: #FFD700;
+    font-size: 30%;
+    letter-spacing: 7%;
+    padding-top: 10px;
+}
+
+#new {
+    font-size: 30px
+}
+
+#new:hover {
+    background-color: yellow;
+}
+
+body {
+    background-color: #d3dacd;
+    font-family: Arial, sans- serif;
+}

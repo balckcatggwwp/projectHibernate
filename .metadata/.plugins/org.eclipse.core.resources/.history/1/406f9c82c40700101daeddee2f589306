@@ -1,0 +1,57 @@
+package com.movieNews.service;
+
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import com.movieNews.dao.movieNewsDao;
+
+@WebServlet("/DeleteNews")
+public class DeleteNews extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public DeleteNews(){
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        // 1. 獲取要刪除的公告 ID
+        String idParam = request.getParameter("id");
+        if (idParam == null || idParam.trim().isEmpty()) {
+            request.setAttribute("error", "公告ID無效！");
+            request.getRequestDispatcher("/movieNews/getAllNews.jsp").forward(request, response);
+            return;
+        }
+
+        try {
+            int id = Integer.parseInt(idParam); // 轉換 ID
+            movieNewsDao dao = new movieNewsDao();
+            
+            // 2. 執行刪除操作
+            boolean success = dao.DeleteNews(id);
+            
+            // 3. 根據結果跳轉
+            if (success) {
+                response.sendRedirect(request.getContextPath() + "/GetAllNews"); // 成功則返回公告列表
+            } else {
+                request.setAttribute("error", "刪除公告失敗，請重試！");
+                request.getRequestDispatcher("/movieNews/getAllNews.jsp").forward(request, response);
+            }
+
+        } catch (NumberFormatException e) {
+            // 當 ID 無效或轉換失敗時，顯示錯誤訊息
+            request.setAttribute("error", "公告ID格式錯誤！");
+            request.getRequestDispatcher("/movieNews/getAllNews.jsp").forward(request, response);
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
+}

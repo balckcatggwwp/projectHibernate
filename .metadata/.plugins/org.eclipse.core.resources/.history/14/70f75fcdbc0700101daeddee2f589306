@@ -1,0 +1,183 @@
+package com.movieNews.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+
+import com.movieNews.bean.MovieNewsBean;
+import com.tick.dao.TickDao;
+
+public class movieNewsDao {
+	private Session session;
+
+	public TickDao(Session session) {
+		this.session = session;
+	}
+	public List<MovieNewsBean> getAllNews() {
+//		Connection connection = Utils.getConnection();
+//		PreparedStatement preparedStatement = null;
+//		ResultSet resultSet = null;
+//		String SQL = "SELECT * FROM news";
+		List<MovieNewsBean> Allnews = new ArrayList<MovieNewsBean>();
+		try {
+
+//			preparedStatement  = connection.prepareStatement(SQL);
+//			resultSet = preparedStatement.executeQuery();
+//			MovieNewsBean news = null;
+//			while (resultSet.next()) {
+//				news = new MovieNewsBean();
+//				news.setId(resultSet.getInt("id"));
+//				news.setTitle(resultSet.getString("title"));
+//				news.setContent(resultSet.getString("content"));
+//				news.setSummary(resultSet.getString("summary"));
+//				news.setImageUrl(resultSet.getString("image_url"));
+//				news.setPublishDate(resultSet.getDate("publish_date"));
+//				news.setCreatedAt(resultSet.getDate("created_at"));
+//				news.setUpdatedAt(resultSet.getDate("updated_at"));
+//				Allnews.add(news);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+//			Utils.closeResource(connection, preparedStatement, resultSet);
+		}
+		return Allnews;
+	}
+
+	public boolean addNews(String title, String content, String summary, String imagePath) {
+	    Connection connection = Utils.getConnection();
+	    PreparedStatement preparedStatement = null;
+	    String sql = "INSERT INTO news (title, summary, content, image_url, publish_date, created_at, updated_at) VALUES (?, ?, ?, ?, GETDATE(), GETDATE(), GETDATE())";
+	    
+	    try {
+	        preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setString(1, title);
+	        preparedStatement.setString(2, summary);
+	        preparedStatement.setString(3, content);
+	        preparedStatement.setString(4, imagePath);
+	        
+	        int rowsAffected = preparedStatement.executeUpdate(); // 確認是否有成功插入
+	        return rowsAffected > 0; // 若有影響行數，代表插入成功
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false; // 若發生錯誤則回傳 `false`
+	    } finally {
+	        Utils.closeResource(connection, preparedStatement);
+	    }
+	}
+
+
+	public boolean DeleteNews(Integer id) {
+	    Connection connection = Utils.getConnection();
+	    PreparedStatement preparedStatement = null;
+	    String sql = "DELETE FROM news WHERE id=?";
+
+	    try {
+	        preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setInt(1, id);
+	        int rowsAffected = preparedStatement.executeUpdate(); // 使用 executeUpdate() 方法來執行刪除
+	        return rowsAffected > 0; // 如果刪除的行數大於 0，則返回 true，表示刪除成功
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false; // 如果出現錯誤，則返回 false
+	    } finally {
+	        Utils.closeResource(connection, preparedStatement);
+	    }
+	}
+
+
+	public void UpdateNews(String title, String content, String summary, String imagePart, Integer id) {
+		Connection connection = Utils.getConnection();
+		PreparedStatement preparedStatement = null;
+		String sql = "UPDATE news SET title = ?, summary = ?, content = ?, image_url=? , updated_at = GETDATE() WHERE id = ?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, title);
+			preparedStatement.setString(2, summary);
+			preparedStatement.setString(3, content);
+			preparedStatement.setString(4, imagePart);
+			preparedStatement.setInt(5, (id));
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			Utils.closeResource(connection, preparedStatement);
+		}
+	}
+	
+	public MovieNewsBean getNewsById(int id) {
+	    Connection connection = Utils.getConnection();
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    String sql = "SELECT * FROM news WHERE id = ?";
+	    MovieNewsBean news = null;
+
+	    try {
+	        preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setInt(1, id);
+	        resultSet = preparedStatement.executeQuery();
+
+	        if (resultSet.next()) {
+	            news = new MovieNewsBean();
+	            news.setId(resultSet.getInt("id"));
+	            news.setTitle(resultSet.getString("title"));
+	            news.setContent(resultSet.getString("content"));
+	            news.setSummary(resultSet.getString("summary"));
+	            news.setImageUrl(resultSet.getString("image_url"));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        Utils.closeResource(connection, preparedStatement, resultSet);
+	    }
+
+	    return news;
+	}
+	public List<MovieNewsBean> searchNews(String keyword) {
+        List<MovieNewsBean> newsList = new ArrayList<>();
+        Connection connection = Utils.getConnection();
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+        String sql = "SELECT * FROM news WHERE title LIKE ? OR summary LIKE ?";
+        
+
+        try {        
+            // 使用 PreparedStatement 進行模糊查詢
+            preparedStatement = connection.prepareStatement(sql);
+            String searchKeyword = "%" + keyword + "%";  // 在關鍵字前後加上 '%' 以進行模糊查詢
+            preparedStatement.setString(1, searchKeyword);
+            preparedStatement.setString(2, searchKeyword);
+
+            resultSet = preparedStatement.executeQuery();
+
+            // 將查詢結果轉換為 MovieNewsBean 物件
+            while (resultSet.next()) {
+                MovieNewsBean news = new MovieNewsBean();
+                news.setId(resultSet.getInt("id"));
+                news.setTitle(resultSet.getString("title"));
+                news.setContent(resultSet.getString("content"));
+                news.setSummary(resultSet.getString("summary"));
+                news.setImageUrl(resultSet.getString("image_url"));
+                news.setPublishDate(resultSet.getDate("publish_date"));
+                news.setCreatedAt(resultSet.getDate("created_at"));
+                news.setUpdatedAt(resultSet.getDate("updated_at"));
+                news.setStatus(resultSet.getString("status"));
+                newsList.add(news);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        finally {
+	        Utils.closeResource(connection, preparedStatement, resultSet);
+	    }
+        return newsList;
+    }
+
+
+}
